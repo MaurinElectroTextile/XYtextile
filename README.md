@@ -1,0 +1,4 @@
+TextileXY
+=========
+
+Resistive textile interface
