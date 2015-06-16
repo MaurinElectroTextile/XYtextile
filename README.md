@@ -2,6 +2,7 @@ TextileXY
 =========
 
 The resistive XY textile interface
+http://maurin.donneaud.free.fr/?-XYinteraction,3-
 
 The textileXY is a large tactile interface use to play electronic music. The performer plays it simply by the movement of his/her hand on it's surface. This textile interface allows users to compose and interpret electronic music by choreographic movements. By its size, its texture, its flexibility and its transparency, this textile interface involves the whole body in the musical interpretation. Like a music score, the sound elements are graphically represented on the fabric, giving to the composer the ability to locate and play (with) them. Thus, for each piece of music, a graphic partition is carried out. The idea behind this project is also to develop an opposite approach to a classical process (from graphic towards the sound). Created in collaboration with graphic designers and composers, these hybrid textiles offer spaces to be explored by look, touch and gesture. Today, this multi- functional project inspires new usages in numerous domains. For example, we're currently working with a choreographer to integrate dance with the musical fabric. We have already created an installation in which allowed two people to communicate by drawings on the fabric over an internet connection. We also plan to use this programmable surface for gesture recognition. The idea is to associate symbolic gestures with a particular function: for example, to make an ambient light glow, you need to draw a circle on the sensitive fabric placed on a room wall.
 
