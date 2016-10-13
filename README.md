@@ -15,6 +15,10 @@ The textileXY is currently used by Marco Marini a French Electro-Acoustic compos
 
 ## Hardware
 
+This smart textile is made out of two conductive fabrics, each one containing conductive lines oriented in opposite directions. When a pressure is aplay to the fabric, the two fabrics connect and the electronic can sens the position of the touch. The technic is a simple voltage divider.
+
+![alt tag](https://farm1.staticflickr.com/176/429687135_4d1ef7704b_o_d.gif)
+
 ## Software
 
 We propose a set of programs made for this project. All software are a modular base that can be combine to make a particular application. The code used for this library is mainly Pure Data, a multi-platform open-source visual programming. This library is inspired by the ENIGMES-Lib originally designed for Max Msp by Roland Cahen for the ENIGMES project. "ENIGMES-Lib" is a set of programs made for playing sound through interactive graphical metaphors.
