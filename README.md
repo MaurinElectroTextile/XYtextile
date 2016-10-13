@@ -20,7 +20,7 @@ This smart textile is made out of two conductive fabrics, each one containing co
 
 ## Electronic firmware 
 - Arduino sketch with optimized communication
-To obtain the XY contact value the firmware do a two time sensing. Eatch sequence sens a value who is proportional to X or Y finger position. This principle can be illustrated by two potentiometers which middles points pins are connected together and the others pins connected to the microcontroleur. Below, the two-time program to obtain significant values of XY finger position. 
+To get the XY coordinates the firmware do a two time sensing algorithm. Eatch sequence sens a value who is proportional to X or Y finger position. This principle can be illustrated by two potentiometers which middles points pins are connected together and the others pins connected to the microcontroleur. Below, the two-time program to obtain significant values of XY finger position. 
 
 ## Software
 This library contains a set of programs that can be combined to fit any graphic pattern composition. The code used for that project is mainly Pure Data. This library is a fork of the ENIGMES-Lib (Max-MSP) made by Roland Cahen for the ENIGMES project. 
