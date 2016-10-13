@@ -21,7 +21,7 @@ This smart textile is made out of two conductive fabrics, each one containing co
 
 ## Software
 
-We propose a set of programs made for this project. All software are a modular base that can be combine to make a particular application. The code used for this library is mainly Pure Data, a multi-platform open-source visual programming. This library is inspired by the ENIGMES-Lib originally designed for Max Msp by Roland Cahen for the ENIGMES project. "ENIGMES-Lib" is a set of programs made for playing sound through interactive graphical metaphors.
+This library contains a set of programs that can be combined to fit any graphic pattern composition. The code used for that project is mainly Pure Data. This library is a fork of the ENIGMES-Lib (Max-MSP) made by Roland Cahen for the ENIGMES project. 
 
 - Arduino zero sketch with optimized communication
 - Pure Data driver : data acquisition of XY textile
