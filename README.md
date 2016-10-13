@@ -14,16 +14,16 @@ The XYtextile is a large tactile interface use to play electronic music. The per
 The textileXY is currently used by Marco Marini a French Electro-Acoustic composer. Within the research project "ENIGMES" on the topic of navigable score, Marco Marini was taken part in creation of a dedicated XY textile. Currently finished, through performances Marco Marini uses all the gestual and acoustic actions patterns required to interprete this interactive score: musical notations, sound lines, trajectory... The movement of his hands on the textile surface triggers musical lietmotives. Inspired by echography (graphic sounds patterns), each graphic pattern uses simultaneously technical and symbolic codes. These patterns allow the musician to localise the sounds, their shape and their duration. The role of the performer is transformed, he is musican and dancer which makes for a unique mis-en-scene of the musical score. Facing the public the performer (both musician and dancer) shows how the movement of his hands bring to life the music as he traces the patterns on the surface of the translucent fabric. His fingers in contact with the fabric playlike the record head on a record : distorting the duration of the sound or simply triggering sound events. For the time being the sound environment that we are exploring are highly experimental but new, more "pop" partitions are in perspective.
 
 ## Hardware
-
-This smart textile is made out of two conductive fabrics, each one containing conductive lines oriented in opposite directions. When a pressure is aplay to the fabric, the two fabrics connect and the electronic can sens the position of the touch. The technic is a simple voltage divider.
+This smart textile is made out of two conductive fabrics, each one containing conductive lines oriented in opposite directions. When a pressure is apply on the fabric, the two fabrics connect and the electronic sens the position of the touch. The technic is derivative from the voltage divider technic.
 
 ![alt tag](https://farm1.staticflickr.com/176/429687135_4d1ef7704b_o_d.gif)
 
-## Software
+### Firmware 
+- Arduino sketch with optimized communication
 
+## Software
 This library contains a set of programs that can be combined to fit any graphic pattern composition. The code used for that project is mainly Pure Data. This library is a fork of the ENIGMES-Lib (Max-MSP) made by Roland Cahen for the ENIGMES project. 
 
-- Arduino zero sketch with optimized communication
 - Pure Data driver : data acquisition of XY textile
 - Processing driver : data acquisition of XY textile
 - Curves following : mapp any sound file onto a graphic curve by Vincent Rioux
