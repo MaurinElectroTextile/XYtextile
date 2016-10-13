@@ -13,13 +13,14 @@ The XYtextile is a large tactile interface use to play electronic music. The per
 
 Within the research project "ENIGMES" on the topic of navigable score, Marco Marini was taken part in the creation of a new XYtextile audio and graphic composition. Actualy Marco Marini uses this interface to do musical graphic notations and live performances. Marco play The fabric as an instrument, facing the public through the translucent fabric he manipulate the sound as a physical material and act like a dancer.
 
-## Hardware
+## Electronic Hardware
 This smart textile is made out of two conductive fabrics, each one containing conductive lines oriented in opposite directions. When a pressure is apply on the fabric, the two fabrics connect and the electronic sens the position of the touch. The technic is derivative from the voltage divider technic.
 
 ![alt tag](https://farm1.staticflickr.com/176/429687135_4d1ef7704b_o_d.gif)
 
-### Firmware 
+## Electronic firmware 
 - Arduino sketch with optimized communication
+To obtain the XY contact value the firmware do a two time sensing. Eatch sequence sens a value who is proportional to X or Y finger position. This principle can be illustrated by two potentiometers which middles points pins are connected together and the others pins connected to the microcontroleur. Below, the two-time program to obtain significant values of XY finger position. 
 
 ## Software
 This library contains a set of programs that can be combined to fit any graphic pattern composition. The code used for that project is mainly Pure Data. This library is a fork of the ENIGMES-Lib (Max-MSP) made by Roland Cahen for the ENIGMES project. 
