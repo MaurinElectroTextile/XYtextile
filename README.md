@@ -26,13 +26,13 @@ Within the research project "ENIGMES" on the topic of navigable score, Marco Mar
 Actualy Marco uses this interface to do musical graphic notations and live performances.
 Marco play The fabric as an instrument, facing the public through the translucent fabric he manipulate the sound as a physical material and act like a dancer.
 
-## Electronic Hardware
+## Hardware
 This smart textile is made out of two conductive fabrics, each one containing conductive lines oriented in opposite directions.
 When a pressure is apply on this structure, the two fabrics connect and the electronic sens the touch position.
 
 ![alt tag](https://farm1.staticflickr.com/176/429687135_4d1ef7704b_o_d.gif)
 
-## Electronic firmware
+## Firmware
 To get the XY coordinates the firmware perform a two time sensing algorithm.
 Eatch sequence sens a value that cotrespond to X or Y finger position.
 This principle can be illustrated by the following schematics:
@@ -43,7 +43,6 @@ This principle can be illustrated by the following schematics:
 This library contains a set of programs that can be combined to fit any graphic pattern composition.
 The code used for that project is mainly Pure Data.
 This library is a fork of the ENIGMES-Lib (Max-MSP) made by Roland Cahen for the ENIGMES project. 
-
 - Pure Data driver : data acquisition of XY textile
 - Processing driver : data acquisition of XY textile
 - Curves following : mapp any sound file onto a graphic curve by Vincent Rioux
