@@ -1,6 +1,6 @@
 # The XYtextile
 
-### Transforming the textile into an intuitive way to interact with computers. This project is part of electronic textiles research on IHM gesture interaction that have been started in 2005.
+### Transforming textiles into an intuitive way to interact with computers. This project is part of an electronic textiles research on HCI gesture interaction that was started in 2005.
 - Credit : Maurin Donneaud <maurin@datapaulette.org>
 - Repository : https://github.com/MaurinElectroTextile/TextileXY
 - Web site : http://maurin.donneaud.free.fr/?-XYinteraction,3-
