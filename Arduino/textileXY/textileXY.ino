@@ -1,88 +1,89 @@
 ////////////////// déclarations des variables
-#define Y1             10                   // select the analog pin 10
-#define Y2             9                    // select the analog pin 9
-#define X1             11                   // select the analog pin 11
-#define X2             12                   // select the analog pin 12
-#define sensorPin0     1                    // select the analog input pin 0
-#define sensorPin1     0                    // select the analog input pin 1
-#define del            2
+#define Y1_PIN         10                   // Define I/O pin 10
+#define Y2_PIN         9                    // Define I/O pin 9
+#define X1_PIN         11                   // Define I/O pin 11
+#define X2_PIN         12                   // Define I/O pin 12
+#define ADC_PIN_0      A1                   // Define the analog input pin 0
+#define ADC_PIN_1      A0                   // Define the analog input pin 1
+#define BAUD_RATE      230400               // Define USB baud rate
+#define DEL            2                    // Define delay
 
-int rawData_X=0;  // variables for sensor1 data
-int rawData_Y=0;  // variables for sensor1 data
-int Xmsb, Xlsb, Ymsb, Ylsb;
+uint16_t raw_X = 0;                         // Variables for sensor1 data
+uint16_t raw_Y = 0;                         // Variables for sensor1 data
+uint16_t Xmsb, Xlsb, Ymsb, Ylsb;
 
 ////////////////// initialisation
 void setup() {
-  Serial.begin(19200);
+  Serial.begin(BAUD_RATE);
 }
 
 ////////////////// boucle principale
 void loop() {
   // FIRST TIME : GET X VALUE
-  pinMode(X1, INPUT);                  // put pin in high impedance (+infinite) 
-  pinMode(X2, INPUT);                  // put pin in high impedance (+infinite)
-  pinMode(Y1, OUTPUT);                 // declare the Pin as an OUTPUT
-  pinMode(Y2, OUTPUT);                 // declare the Pin as an OUTPUT
-  digitalWrite(Y1, LOW);               // turn off the Pin 10
-  digitalWrite(Y2, HIGH);              // turn on the Pin 9
-  delay(del);
+  pinMode(X1_PIN, INPUT);                  // Set pin in high impedance state (+infinite) 
+  pinMode(X2_PIN, INPUT);                  // Set pin in high impedance state (+infinite)
+  pinMode(Y1_PIN, OUTPUT);                 // Set Pin as an OUTPUT
+  pinMode(Y2_PIN, OUTPUT);                 // Set Pin as an OUTPUT
+  digitalWrite(Y1_PIN, LOW);               // Turn OFF the pin 10
+  digitalWrite(Y2_PIN, HIGH);              // Turn ON the pin 9
+  //delay(DEL);
 
-  rawData_X = analogRead(sensorPin0);
-  transmitX(rawData_X);
+  raw_X = analogRead(ADC_PIN_0);
+  transmit_X(raw_X);
 
   // SECOND TIME : GET Y VALUE 
-  pinMode(X1, OUTPUT);                 // declare the Pin as an OUTPUT
-  pinMode(X2, OUTPUT);                 // declare the Pin as an OUTPUT
-  pinMode(Y1, INPUT);                  // put pin in high impedance (+infinite)
-  pinMode(Y2, INPUT);                  // put pin in high impedance (+infinite;)
-  digitalWrite(X1, HIGH);              // turn on the Pin 11
-  digitalWrite(X2, LOW);               // turn off the Pin 12
-  delay(del);
+  pinMode(X1_PIN, OUTPUT);                 // declare the Pin as an OUTPUT
+  pinMode(X2_PIN, OUTPUT);                 // declare the Pin as an OUTPUT
+  pinMode(Y1_PIN, INPUT);                  // put pin in high impedance (+infinite)
+  pinMode(Y2_PIN, INPUT);                  // put pin in high impedance (+infinite;)
+  digitalWrite(X1_PIN, HIGH);              // turn on the Pin 11
+  digitalWrite(X2_PIN, LOW);               // turn off the Pin 12
+  //delay(DEL);
 
-  rawData_Y = analogRead(sensorPin1);
-  transmitY(rawData_Y);
+  raw_Y = analogRead(ADC_PIN_1);
+  transmit_Y(raw_Y);
 }
 
 ////////////////// fonctions de communication série (Arduino -> PC)
-void transmitX(int Xdata){
-  // octet 1 for X ; MSB for X (More Signifiant Bits)
+void transmit_X(int Xdata){
+  // Octet 1 for X ; MSB for X (More Signifiant Bits)
   // 00000xxx  Value (after being shifted 5 times)
   // ||
   // ||--------> MSB
   // |---------> X
-  Xmsb =  Xdata >> 5 ;                 // Division by 32, save the 5 Msb bits
-  Serial.write(Xmsb);                     // Send X MSB
+  Xmsb = Xdata >> 5 ;                  // Division by 32, save the 5 MSB bits
+  Serial.write(Xmsb);                  // Send X MSB
 
   // octet 0 for X ; LSB for X (Less Signifiant Bits)
-  // xxxxxxxx       value
+  // xxxxxxxx     value
   // 00011111     & mask (31)
   // 01000000     + flag
   // 010xxxxx     = result for
-  // 01000000     + 64     for LSB flag
-  // first bit is 0 for X flag
-  Xlsb =  Xdata & 31 ;                 // save the 5 lsb bits
-  Xlsb = Xlsb + 64 ;                    // set second bit to 1 for lsb marker
-  Serial.write(Xlsb);                    // Send X LSB
+  // 01000000     + 64 for LSB flag
+  // 00000000     first bit is 0 for X flag
+  Xlsb = Xdata & 31 ;                  // Save the 5 LSB bits
+  Xlsb = Xlsb + 64 ;                   // Set second bit to 1 for LSB marker
+  Serial.write(Xlsb);                  // Send X LSB
 }
 
-void transmitY(int Ydata){
-  // octet 1 for Y ; MSB for Y (More Significant Bits)
+void transmit_Y(int Ydata){
+  // Octet 1 for Y ; MSB for Y (More Significant Bits)
   // 10000xxx  Value (after being shifted 5 times)
   // ||
   // ||--------> MSB
   // |---------> 1=>Y
   Ymsb = Ydata >> 5 ;                  // Division by 32, save the 5 Msb bits
-  Ymsb = Ymsb + 128 ;                  // add a bit for Y
-  Serial.write(Ymsb);                      // Send Y MSB
+  Ymsb = Ymsb + 128 ;                  // Add a bit for Y
+  Serial.write(Ymsb);                  // Send Y MSB
 
   // octet 0 for Y ; LSB for Y (Less Significant Bits)
-  // xxxxxxxx       value
+  // xxxxxxxx     value
   // 00011111     & mask
   // 000xxxxx     = result
-  // 01000000     + 64     for LSB flag
-  // 10000000     + 128    for Y flag
-  Ylsb = Ydata & 31 ;                  // save the 5 lsb bits
-  Ylsb = Ylsb + 64 ;                    // set second bit to 1 for lsb marker
-  Ylsb = Ylsb + 128 ;                  // add a bit for Y
-  Serial.write(Ylsb);                    // Send Y LSB
+  // 01000000     + 64  for LSB flag
+  // 10000000     first bit is 1 for Y flag
+  Ylsb = Ydata & 31 ;                  // Save the 5 lsb bits
+  Ylsb = Ylsb + 64 ;                   // Set second bit to 1 for lsb marker
+  Ylsb = Ylsb + 128 ;                  // Add a bit for Y
+  Serial.write(Ylsb);                  // Send Y LSB
 }
